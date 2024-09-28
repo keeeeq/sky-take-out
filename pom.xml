@@ -18,8 +18,11 @@
         <module>sky-server</module>
     </modules>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <mybatis.spring>2.2.0</mybatis.spring>
-        <lombok>1.18.20</lombok>
+        <lombok>1.18.30</lombok>
         <fastjson>1.2.76</fastjson>
         <commons.lang>2.6</commons.lang>
         <druid>1.2.1</druid>
