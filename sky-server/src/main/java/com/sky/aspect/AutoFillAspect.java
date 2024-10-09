@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 import static com.sky.constant.AutoFillConstant.*;
 
 // 用于标识切面类，实现公共字段类型填充
+// TODO 反射相关学习
 @Aspect
 @Slf4j
 @Component
@@ -38,7 +39,7 @@ public  void autoFillPointCut(){}
      */
     @Before("autoFillPointCut()")
     public void autoFill(JoinPoint joinPoint) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        log.info("nihaohahaha");
+        log.info("开始进行公共字段自动填充。。。");
         //获取被拦截方法上的数据库操作类型
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();//方法签名对象
         AutoFill autoFill = signature.getMethod().getAnnotation(AutoFill.class);//获得注解对象
