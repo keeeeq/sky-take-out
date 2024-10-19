@@ -52,4 +52,19 @@ public class SetmealServiceImpl implements SetmealService {
         return new PageResult(page.getTotal(),page.getResult());
     }
 
+    public void startOrStop(String status, String id) {
+        setmealMapper.startOrStop(status,id);
+
+    }
+
+    public SetmealVO getById(Long id) {
+        Setmeal setmeal = setmealMapper.getById(id);
+        List<SetmealDish> setmealDishes=setmealDishMapper.getBySetmealId(id);
+        SetmealVO setmealVO=new SetmealVO();
+        BeanUtils.copyProperties(setmeal,setmealVO);
+        setmealVO.setSetmealDishes(setmealDishes);
+        return setmealVO;
+    }
+
+
 }

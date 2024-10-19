@@ -10,6 +10,8 @@ import com.sky.vo.SetmealVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,6 +31,11 @@ public interface SetmealMapper {
 
 
     Page<SetmealVO> pageQuery(SetmealPageQueryDTO setmealPageQueryDTO);
+    @Transactional
+    @Update("update setmeal set status = #{status} where id = #{id}")
+    void startOrStop(String status, String id);
+
+    Setmeal getById(Long id);
 
 
 //    List<Long> getSetmealIdsByDishId(List<Long> ids);

@@ -21,6 +21,10 @@
         </where>
         order by setmeal.update_time desc
     </select>
+
+    <select id="getById" resultType="com.sky.entity.Setmeal">
+    select * from setmeal where id = #{id}
+    </select>
 </mapper>
 
 
