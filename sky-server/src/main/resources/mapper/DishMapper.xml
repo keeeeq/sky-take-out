@@ -30,6 +30,17 @@
         </where>
         order by d.update_time desc
 </select>
+
+    <select id="selectByCategoryId" resultType="com.sky.entity.Dish">
+        select * from dish
+        <where>
+        <if test="categoryId != null and categoryId!=''" >
+            and category_id = #{categoryId}
+        </if>
+        </where>
+                     order by update_time desc
+    </select>
+
     <update id="update">
         UPDATE DISH <set>
         <if test="name != null">name = #{name},</if>

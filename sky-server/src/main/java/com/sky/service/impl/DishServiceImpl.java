@@ -2,6 +2,7 @@ package com.sky.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.sky.annotation.AutoFill;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.StatusConstant;
 import com.sky.dto.DishDTO;
@@ -40,6 +41,7 @@ public class DishServiceImpl implements DishService {
         dishMapper.insert(dish);
         //获取inser生成主键值
         Long dishId = dish.getId();
+
         List<DishFlavor> flavors = dishDTO.getFlavors();
         if (flavors!=null&&flavors.size()>0){
             flavors.forEach(dishFlavor -> dishFlavor.setDishId(dishId));
@@ -100,6 +102,19 @@ public class DishServiceImpl implements DishService {
             flavors.forEach(dishFlavor -> dishFlavor.setDishId(dishDTO.getId()));
             dishFlavorMapper.insertBatch(flavors);
         }
+    }
+
+    /**
+     * 根据分类id查询菜品
+     * @param categoryId
+     * @return
+     */
+    public List<Dish> selectByCategoryId(String categoryId) {
+        Dish dish = Dish.builder()
+                .categoryId(Long.valueOf(categoryId))
+                .build();
+        return dishMapper.selectByCategoryId(categoryId);
+
     }
 
 }
