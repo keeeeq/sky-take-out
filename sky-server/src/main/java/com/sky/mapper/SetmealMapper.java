@@ -37,6 +37,12 @@ public interface SetmealMapper {
 
     Setmeal getById(Long id);
 
+    @Transactional
+    void deleteByIds(List<Long> ids);
+    @AutoFill(value = OperationType.UPDATE)
+    void update(Setmeal setmeal);
+
+
 
 //    List<Long> getSetmealIdsByDishId(List<Long> ids);
 }

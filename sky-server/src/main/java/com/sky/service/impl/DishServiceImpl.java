@@ -112,6 +112,7 @@ public class DishServiceImpl implements DishService {
     public List<Dish> selectByCategoryId(String categoryId) {
         Dish dish = Dish.builder()
                 .categoryId(Long.valueOf(categoryId))
+                .status(StatusConstant.ENABLE)
                 .build();
         return dishMapper.selectByCategoryId(categoryId);
 

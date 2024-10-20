@@ -9,12 +9,15 @@ import com.sky.vo.SetmealVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.messaging.MessagingException;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("admin/setmeal")
@@ -58,6 +61,20 @@ public class SetmealController {
         log.info("根据id查询套餐：{}",id);
         SetmealVO setmealVO=setmealService.getById(id);
         return Result.success(setmealVO);
+    }
+    @PutMapping
+    @ApiOperation("修改套餐")
+    public Result updateWithDish(@RequestBody SetmealDTO setmealDTO){
+        log.info("修改套餐信息：{}",setmealDTO);
+        setmealService.updateWithDish(setmealDTO);
+        return Result.success();
+    }
+    @DeleteMapping
+    @ApiOperation("批量删除套餐")
+    public Result delete(@RequestParam List<Long> ids){
+        log.info("批量删除套餐：{}",ids);
+        setmealService.deleteBatch(ids);
+        return Result.success();
     }
     }
 
