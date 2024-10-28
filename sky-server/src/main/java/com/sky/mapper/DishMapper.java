@@ -58,4 +58,5 @@ public interface DishMapper {
     void update(Dish dish);
 
     List<Dish> selectByCategoryId(String categoryId);
+    List<Dish> list(Dish dish);
 }

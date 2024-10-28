@@ -11,6 +11,9 @@ sky:
     access-key-id: <your_new_placeholder>
     access-key-secret: <your_new_placeholder>
     bucket-name: <your_new_placeholder>
+  wechat:
+    appid: <your_new_placeholder>
+    secret: <your_new_placeholder>
   redis:
     host: localhost
     port: 6379
